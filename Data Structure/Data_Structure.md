@@ -15,21 +15,21 @@
  * definiteness  (夠明確)
  * finiteness    (執行能截止)
  * effectiveness (要有效果)
-```
+```C
 Instertion Sort(A[]){
 		for(P=0; P<N; P++){
 			insert A[p] in to A[0]~A[P-1] 中正確位置
 		}
 }
 ```
-```
+```C
 Selection Sort(A[]){
 		for(P=0; P<N; P++){
 			找到A[]中最小的，並insert in to A[i]
 		}
 }
 ```
-```
+```C
 Binary Search(){
         while(還有值能找){
             middle = (left + right)/2;
@@ -78,7 +78,8 @@ Binary Search(){
 		  Average case = (1 + 2*2 + 3*4)/17 (假設每筆被搜尋機率相等,且不會搜尋沒有的資料)
 	```
     
-     * Big O notation(成長速度)
+	* Big O notation(成長速度)
+	```C
 			//找出上下界(最小上界與最大下界)
 			Rules example:
 				for(i=0; i<n; i++){
@@ -95,7 +96,7 @@ Binary Search(){
 							x++;
 				}
 				/***** n^3 + n  *****/
-
+	```
 ####Perfomance measurement
  * timing event *< time.h>*
 	* clock function : system clock
@@ -179,7 +180,7 @@ token ( + . - . * .  / .... )
 ```
 
 **Algorithm**
-```
+```C
 while ( input token != EOF ){
 	if( token == operand )    " 1 "
 		output token 
@@ -199,37 +200,37 @@ while ( input token != EOF ){
 
  **ex1.** 　a+b*c 　  => 　abc*+
 
-  |Steps| token   |   stack  |   output|
-  |:---:|:------:|:--------:|:-----------:|
-  |1|  a     |            |   a     | 
-  |2|  +     |     +      |          |
-  |3|  b     |     +      |   ab     |
-  |4|  *     |    + *    |           |
-  |5|  c     |    + *   |     abc    |
-  |6|        |         |      abc*+  |
+  Steps| token   |   stack  |   output
+  :---: | :------: | :--------: | :-----------:
+  1|  a     |            |   a      
+  2|  +     |     +      |         
+  3|  b     |     +      |   ab     
+  4|  *     |    + *    |           
+  5|  c     |    + *   |     abc    
+  6|        |         |      abc*+  
   
 
 
 **ex2. **　	a + b * c + ( d * e + f ) * g  　 =>  　a b c * +   d e * f + g *   +
 
-  |Steps| token    |       stack    |       output         |   operation |
-  |:---:|:--------:|:--------------:|:--------------------:|:-----------:|
-  |1    |  a       |                |       a              |    " 1 "    |   
-  |2    |  +       |        +       |       a              |    " 3 "    |
-  |3    |  b       |        +       |       ab             |    " 1 "    |
-  |4    |  *       |        + *     |       ab             |    " 3 "    |
-  |5    |  c       |        + *     |       abc            |    " 1 "    |
-  |6    |  +       |        +       |       abc*+          |    " 3 "    |
-  |7    |  (       |        + (     |       abc*+          |    " 3 "    |
-  |8    |  d       |        + (     |       abc*+d         |    " 1 "    |
-  |9    |  *       |        + ( *   |       abc*+d         |    " 3 "    |
-  |10   |  e       |        + ( *   |       abc*+de        |    " 1 "    |
-  |11   |  +       |        + ( +   |       abc*+de*       |    " 3 "    |
-  |12   |  f       |        + ( +   |       abc*+de*f      |    " 1 "    |
-  |13   |  )       |        +       |       abc*+de*f+     |    " 2 "    |
-  |14   |  *       |        + *     |       abc*+de*f+     |    " 3 "    |  
-  |15   |  g       |        + *     |       abc*+de*f+g    |    " 1 "    |
-  |16   |          |                |       abc*+de*f+g*+  |    " 3 "    |
+ Steps| token    |       stack    |       output         |   operation 
+  :---: | :--------: | :--------------: | :--------------------: | :-----------: 
+ 1    |  a       |                |       a              |    " 1 "       
+ 2    |  +       |        +       |       a              |    " 3 "    
+ 3    |  b       |        +       |       ab             |    " 1 "    
+ 4    |  *       |        + *     |       ab             |    " 3 "    
+ 5    |  c       |        + *     |       abc            |    " 1 "    
+ 6    |  +       |        +       |       abc*+          |    " 3 "    
+ 7    |  (       |        + (     |       abc*+          |    " 3 "    
+ 8    |  d       |        + (     |       abc*+d         |    " 1 "    
+ 9    |  *       |        + ( *   |       abc*+d         |    " 3 "    
+ 10   |  e       |        + ( *   |       abc*+de        |    " 1 "    
+ 11   |  +       |        + ( +   |       abc*+de*       |    " 3 "    
+ 12   |  f       |        + ( +   |       abc*+de*f      |    " 1 "    
+ 13   |  )       |        +       |       abc*+de*f+     |    " 2 "    
+ 14   |  *       |        + *     |       abc*+de*f+     |    " 3 "      
+ 15   |  g       |        + *     |       abc*+de*f+g    |    " 1 "    
+ 16   |          |                |       abc*+de*f+g*+  |    " 3 "    
 
 
 ---
@@ -262,7 +263,7 @@ while ( input token != EOF ){
  * Expression Tree 
 	* leaves: 	 **operands**
 	* other nodes: **operators**
-```
+```C
 // Construct an Expression Tree ( form postfix to expression tree )
 	while(input token != EOF){
           if(token == operand)
@@ -283,7 +284,7 @@ while ( input token != EOF ){
 		* for every node X:
 			* value of all keys in left subtree are smaller than key in X
 			* value of all keys in right subtree are larger than key in X
-	```
+	```C
 	Position Find(ElementType X, SearchTree T){
                   if(T == NULL)
                       return NULL;
@@ -338,7 +339,7 @@ Deletion | O(logN)
 ```
 		BEFORE                         AFTER
 		
-		22 : - 					   16 : 22
+		22 : - 			   		      16 : 22
 		/     \ 					 /   |   \
       11:16  41:58   			   11:- 18:- 41:58 
      /  |  \                       / \  /  \   
@@ -481,12 +482,13 @@ Loop| an edge (v, v) from vertex to itself(指向自己的邊)
 						  
 						
  * Breadth First Search(BFS):先廣後深, 走完就變得像Tree (用queue實作)
-             A            
-			/|\     從A開始：		
-		   B E C 	DFS: A B D F E C G
-		  /\ | |     BFS: A B E C D F G
-		 D F_| G
-		      
+>            A            
+>			/|\     從A開始：		
+>		   B E C 	DFS: A B D F E C G
+>		  /\ | |     BFS: A B E C D F G
+>		 D F_| G
+
+		```C
 		BFS(Graph G){
 			Queue Q(size = number of vertices);
 			enqueue(Start vertex, Q);
@@ -500,17 +502,17 @@ Loop| an edge (v, v) from vertex to itself(指向自己的邊)
 				}
 			}
 		}
+		```
 
 ### Topological Sorting 
 ordering of vertices in a DAG(Directed Acyclic Graph) such that if there is a path from Vi to Vj,
 then Vj appears after Vi in the ordering
-
 ```
-	1 → 2 	ANS: 1,2,5,4,3,7,6
-  ↙ ↘  ↙ ↘          
- 3 ←  4 ←  5      紀錄每個點的Indegree, 拿掉Indegree = 0的點, 然後相鄰的點的Indegree都減1
-  ↘ ↙  ↘ ↙       然後再找新的Indegree = 0的點(如果同時有兩個以上Indegree=0的就隨便選一個)
-    6 ← 7         Time-complexity: O(|V|^2) 
+	 1 → 2 	ANS: 1,2,5,4,3,7,6
+   ↙ ↘  ↙ ↘          
+  3 ←  4 ←  5      紀錄每個點的Indegree, 拿掉Indegree = 0的點, 然後相鄰的點的Indegree都減1
+   ↘ ↙  ↘ ↙       然後再找新的Indegree = 0的點(如果同時有兩個以上Indegree=0的就隨便選一個)
+     6 ← 7         Time-complexity: O(|V|^2) 
                        --> 利用queue記錄下一回合Indegree會是0的點, 可以改善成O(|E|+|V|)
 ```
 
@@ -538,8 +540,8 @@ then Vj appears after Vi in the ordering
   * priority queue: O(|E|log|V| + |V|log|V|)	
   * 幾個點就做幾回,一回合中
 	 1. 選出主角(選已知最短距離最小的點)
-	 2. 更新adjacent點的最短距離	
-```
+	 2. 更新adjacent點的最短距離
+	 ```C
 		Dijkstra's (Table T){
 			vertex V, W;
 			while (1) {
@@ -557,12 +559,14 @@ then Vj appears after Vi in the ordering
 				}
 			}
 		}
-```
+	```
+	
 ### All-Pairs Shortest Paths ###
 * D(k,i,j) 從i to j的路中經過的點編號最大是k
 * D(k,i,j) = D(k-1,i,j) 　　　　　 不經過k  
 　　　	or D(k-1,i,k)+D(k-1,k,j) 經過k
-```
+
+```C
 All-Pairs_Shortest_Paths(2D-array D, 2D_array Path, int N){
 	D 初始成原始的 adjacency matrix;
 	for(k=0; k<N; k++)
