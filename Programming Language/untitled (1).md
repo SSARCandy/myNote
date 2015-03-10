@@ -51,7 +51,7 @@ length (_:xs) = 1 + length xs
 ##Polymorphic Functions & Types  
 **Polymorphic function** does not care about the element typeof its list parameter  
   類似物件導向的**多型** , For example:  `length ::[a] -> Int`  
-  //*Here **a** is a type variablethat can be instantiated to any types*
+  *Here """a""" is a type variable that can be instantiated to any types*
     
     
     
@@ -68,7 +68,7 @@ length (_:xs) = 1 + length xs
     
     
 ##List Manipulation Functions
- - xs ++ ys 　　　(also known asappend xs ys)
+ - xs ++ ys 　　　(also known as append xs ys)
  
  ```Haskell
 	 (++) :: [a] -> [a] -> [a]
@@ -104,7 +104,7 @@ length (_:xs) = 1 + length xs
   tailRev (x:xs) ys = tailRev xs (x:ys)
  ```
  - Zipping/Unzipping two lists
-    - Zip: `Ex. zip [1, 2] [‘a’, ’b’] = [(1, ’a’),(2, ’b’)]`
+    - Zip: `Ex. zip [1, 2] ['a', 'b'] = [(1, 'a'),(2, 'b')]`
  ```Haskell
   zip :: [a] -> [b] -> [(a, b)]
   zip [] ys = [] -- 沒得配對的，回傳空
@@ -114,7 +114,7 @@ length (_:xs) = 1 + length xs
     -Unzip:  `Ex. zip [(1, 'a'),(2, 'b')] = [1, 2] ['a', 'b'] `
  ```Haskell
   unzip :: [(a,b)] -> ([a], [b])
-  unzip []		   = []
+  unzip []		     = []
   --x 配 a, y 配 b, ps配剩下的(a, b)
   unzip ((x,y) : ps) = (x:xs, y:ys) -- 分解成兩個list, 先各unzip一個 
                            where
@@ -138,15 +138,15 @@ length (_:xs) = 1 + length xs
     ```
 
     ```
-    evens “abcde”
- 		      = { apply evens}
-    ’a’ : odds “bcde”
-  		     = { apply odds}
-    ’a’ : evens “cde”
-   		    = { apply evens}
-    ’a’ : ’c’ : odds “de”
-    		   = { apply odds}
-    ’a’ : ’c’ : evens “e”
+    evens "abcde"
+    		= { apply evens}
+    'a' : odds "bcde"
+    		= { apply odds}
+    'a' : evens "cde"
+    		= { apply evens}
+    'a' : 'c' : odds "de"
+    		= { apply odds}
+    'a' : 'c' : evens "e"
     ...
     ```
 
