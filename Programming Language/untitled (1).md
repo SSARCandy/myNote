@@ -25,11 +25,11 @@ length (_:xs) = 1 + length xs
 
   	```Haskell
     test1:: [Char] -> Bool
-    test1 (’a’:_)   = True  --第一個是'a'就是True
+    test1 ('a':_)   = True  --第一個是'a'就是True
     test1 _         = False
 
 	test2:: [Char] -> Bool
-    test2 [’a’,_,_] = True  --必須是長度為三的list而且第一個是'a'才是True
+    test2 ['a',_,_] = True  --必須是長度為三的list而且第一個是'a'才是True
     test2 _         = False
   	```
 
@@ -111,7 +111,7 @@ length (_:xs) = 1 + length xs
   zip xs [] = [] -- 沒得配對的，回傳空
   zip (x:xs) (y:ys) = (x,y) : zip xs ys -- 有的配就先配一組，再recursive
  ```
-    -Unzip:  `Ex. zip [(1, ’a’),(2, ’b’)] = [1, 2] [‘a’, ’b’] `
+    -Unzip:  `Ex. zip [(1, 'a'),(2, 'b')] = [1, 2] ['a', 'b'] `
  ```Haskell
   unzip :: [(a,b)] -> ([a], [b])
   unzip []		   = []
