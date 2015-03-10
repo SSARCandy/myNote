@@ -90,18 +90,100 @@ length (_:xs) = 1 + length xs
  - reverse function
  
  ```Haskell
+  -- O(n^2)
   reverse :: [a] -> [a]
   reverse [] = []
   reverse (x : xs) = reverse xs ++ [x]
 
+  -- Tail recursion O(n)
+  reverse :: [a] -> [a]
+  reverse xs = tailRev xs []
+  
+  tailRev :: [a] -> [a] -> [a]
+  tailRev [] ys 	= ys
+  tailRev (x:xs) ys = tailRev xs (x:ys)
  ```
+ - Zipping/Unzipping two lists
+    - Zip: `Ex. zip [1, 2] [‘a’, ’b’] = [(1, ’a’),(2, ’b’)]`
+ ```Haskell
+  zip :: [a] -> [b] -> [(a, b)]
+  zip [] ys = [] -- 沒得配對的，回傳空
+  zip xs [] = [] -- 沒得配對的，回傳空
+  zip (x:xs) (y:ys) = (x,y) : zip xs ys -- 有的配就先配一組，再recursive
+ ```
+    -Unzip:  `Ex. zip [(1, ’a’),(2, ’b’)] = [1, 2] [‘a’, ’b’] `
+ ```Haskell
+  unzip :: [(a,b)] -> ([a], [b])
+  unzip []		   = []
+  --x 配 a, y 配 b, ps配剩下的(a, b)
+  unzip ((x,y) : ps) = (x:xs, y:ys) -- 分解成兩個list, 先各unzip一個 
+                           where
+                           (xs,ys) = unzip ps --recursive call 剩下的 ps
+ ```
+ 
+ - Mutual Recursion  
+   Functions that reference to each other
+   - Example: given a list, selecting **even or odd positions** from it.
+    >evens::[a] -> [a]  
+	>odds ::[a] -> [a]
+
+	```Haskell
+    evens::[a] -> [a]
+    evens[] =[]
+    evens(x :xs) =x: oddsxs
+    odds::[a] -> [a]
+    odds[] =[]
+    odds(_ : xs) =evensxs
+    ```
+
+    ```
+    evens “abcde”
+ 		      = { apply evens}
+    ’a’ : odds “bcde”
+  		     = { apply odds}
+    ’a’ : evens “cde”
+   		    = { apply evens}
+    ’a’ : ’c’ : odds “de”
+    		   = { apply odds}
+    ’a’ : ’c’ : evens “e”
+    ...
+    ```
+
+    
+
+##List Comprehension  
+List comprehensions allow many functions on lists to be performed in a clear and precise manner
+
+```Haskell
+> [ x^2 | x<-[1..5] ]
+[1,4,9,16,25]
+
+--length function with wildcard and generator
+length :: [a] -> Int
+length xs = sum [1 | _ <- xs]
+
+--Multiple Generators
+> [ (x, y) | x <- [1,2], y <- [8,9] ] -- x y寫的順序會影響產生出的Touple內的順序
+[(1,8),(1,9),(2,8),(2,9)]
+
+--Guard
+> [x | x <- [1..10], even x] --The function even x is the guard function
+[2,4,6,8,10]
+```
+Using List Comprehension with Guards to define Prime function:
+```Haskell
+factors :: Int -> [Int]
+factors n = [x| x <- [1..n], n `mod` x==0]
+
+prime :: Int -> Bool
+prime n = length (factors n) == 2
+```
 
 
-
-
-
-
-
+#Higher-Order Functions(HoF)
+ - Functions take **functions as arguments**
+ - Functional values and **Lambda Expressions**
+ - Functions return **functions as results**
 
 
 
