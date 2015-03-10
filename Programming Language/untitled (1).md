@@ -124,16 +124,17 @@ length (_:xs) = 1 + length xs
  - Mutual Recursion  
    Functions that reference to each other
    - Example: given a list, selecting **even or odd positions** from it.
-    >evens::[a] -> [a]  
-	>odds ::[a] -> [a]
+    
+    > evens::[a] -> [a]  
+	> odds ::[a] -> [a]
 
 	```Haskell
-    evens::[a] -> [a]
-    evens[] =[]
-    evens(x :xs) =x: oddsxs
-    odds::[a] -> [a]
-    odds[] =[]
-    odds(_ : xs) =evensxs
+    evens :: [a] -> [a]
+    evens [] 	  = []
+    evens (x :xs) = x:odds xs
+    odds :: [a] -> [a]
+    odds []		  = []
+    odds (_ : xs) = evens xs
     ```
 
     ```
