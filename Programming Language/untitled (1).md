@@ -186,15 +186,32 @@ prime n = length (factors n) == 2
  - Functional values and **Lambda Expressions**
  - Functions return **functions as results**
 
+####List map function  
+Given a function and a list (of appropriate types), applies the function to each element of the list. *(map可以把一個function套用在一個list中的所有元素)*
+
+```Haskell
+map :: (a -> b) -> [a] -> [b] --(a -> b) function as arguments
+map f [] = []
+map f (x : xs) = (f x) : map f xs
+```
+
+####partially evaluated (applied)
+Haskell function argument 可以分期付款，所以也可以利用此來定義簡化版function.  
+Ex. 遞增  
+`plus :: Int -> Int -> Int`  
+so  
+`(plus 1) :: Int -> Int`
 
 
-
-
-
-
-
-
-
+###Function values and Lambda Expressions
+ - Function Values:  
+ A function definition binds a name to its value, function 本身是有 value 的。function本身是可以不需要名子的
+ - Lambda Expression  
+ `\parameterPattern -> body`  
+ Ex. `\x -> (x, x, x)`  
+ Ex. `\x -> x * x` (square)  
+ Ex. `\x -> (\y -> x + y)` same as `add x y = x + y`  
+ Ex. `(^2)` = `\x = x^2`
 
 
 
