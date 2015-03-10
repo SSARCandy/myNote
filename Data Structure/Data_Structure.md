@@ -15,6 +15,7 @@
  * definiteness  (夠明確)
  * finiteness    (執行能截止)
  * effectiveness (要有效果)
+
 ```C
 Instertion Sort(A[]){
 		for(P=0; P<N; P++){
@@ -23,7 +24,7 @@ Instertion Sort(A[]){
 }
 ```
 ```C
-Selection Sort(A[]){
+Selection Sort(A[] {
 		for(P=0; P<N; P++){
 			找到A[]中最小的，並insert in to A[i]
 		}
@@ -56,6 +57,7 @@ Binary Search(){
 ####Perfomance Analysis
  * Complexity theory
 	* space complexity: **記憶體空間**
+
     ```
 		S(P) = c + Sp(I)
 		c: fixed space
@@ -63,6 +65,7 @@ Binary Search(){
 		characteristics: number, size, values of I/O associated
 	```
 	* time complexity:  **電腦執行時間**
+
     ```
 		T(P) = c + Tp(I)
 		c:compile time
@@ -70,6 +73,7 @@ Binary Search(){
 		characteristics: number, size, values of I/O associated
 	```
 	* Worst case, Best case, Average case 
+
 	```
    	 EX：7 sorted data , Binary sort
 
@@ -79,6 +83,7 @@ Binary Search(){
 	```
     
 	* Big O notation(成長速度)
+	
 	```C
 			//找出上下界(最小上界與最大下界)
 			Rules example:
@@ -92,7 +97,7 @@ Binary Search(){
 				for(i=0; i<n; i++){
 					a[i] = 0;
 					for(j=0; j<n; j++)
-						for(k=0; k<n; k++)
+			 			for(k=0; k<n; k++)
 							x++;
 				}
 				/***** n^3 + n  *****/
@@ -173,6 +178,7 @@ Binary Search(){
 ---
 ###**stack**
   可用於Postfix Conversion  
+
 ```
 a+b*c+(d*e+f)*g 
 operand ( a . b . c ...... )
@@ -180,6 +186,7 @@ token ( + . - . * .  / .... )
 ```
 
 **Algorithm**
+
 ```C
 while ( input token != EOF ){
 	if( token == operand )    " 1 "
@@ -263,6 +270,7 @@ while ( input token != EOF ){
  * Expression Tree 
 	* leaves: 	 **operands**
 	* other nodes: **operators**
+
 ```C
 // Construct an Expression Tree ( form postfix to expression tree )
 	while(input token != EOF){
@@ -284,6 +292,7 @@ while ( input token != EOF ){
 		* for every node X:
 			* value of all keys in left subtree are smaller than key in X
 			* value of all keys in right subtree are larger than key in X
+
 	```C
 	Position Find(ElementType X, SearchTree T){
                   if(T == NULL)
@@ -336,6 +345,7 @@ Deletion | O(logN)
       * Overflow: Split(分居) --> nonleaf node change(標兵要反應事實)
 
 	**EX. Instert `19` into a `2-3 Tree`**
+
 ```
 		BEFORE                         AFTER
 		
@@ -347,7 +357,9 @@ Deletion | O(logN)
     8   12 17                    8  12 17 19
             18
 ```
+
 ---
+
 ### Priority Queue 
  * Job scheduling (printer job , CPU job)
    * First-In-First-Out(Queue)
@@ -408,7 +420,8 @@ Deletion | O(logN)
 		  * seprate chaining:  
           每個array都是一個linked list的頭
 		  * open addressing: 
-          ```
+		  
+```
           //遇到collision時, 用F(i)這個新函式跟H(K)相加再mod後找到新的cell 
           //[Hi(k) = (h(k) + F(i)) % TS]
 			  **F(i)的i是collision的次數
@@ -416,7 +429,7 @@ Deletion | O(logN)
 			  liner probing:     F(i) = i
 			  quadratic probing: F(i) = i^2
 			  double hashing:    F(i) = i*( TS2-(K % TS2) ) TS2 is a prime smaller than TS
-		```
+```
           * rehashing:  
           弄個更大的array來重新hash(新TS通常是原TS的兩倍大的第一個質數)
            * rehashing time complexity is O(N)
@@ -507,6 +520,7 @@ Loop| an edge (v, v) from vertex to itself(指向自己的邊)
 ### Topological Sorting 
 ordering of vertices in a DAG(Directed Acyclic Graph) such that if there is a path from Vi to Vj,
 then Vj appears after Vi in the ordering
+
 ```
 	 1 → 2 	ANS: 1,2,5,4,3,7,6
    ↙ ↘  ↙ ↘          
@@ -522,6 +536,7 @@ then Vj appears after Vi in the ordering
 	Shortest Paths in Acyclic Graph (Topological sort)		  	O(|E|+|V|)
 	Weighted Shortest Paths in cyclic graph without negative edges  O(|E|log|V|)
 	Weighted Shortest Paths in cyclic graph with negative edges     O(|E|*|V|)
+
 
         1:1 → 2:2    	-Unweighted Shortest Paths
        ↗  ↘  ↙  ↘    	用 BFS, 先廣後深
@@ -541,7 +556,9 @@ then Vj appears after Vi in the ordering
   * 幾個點就做幾回,一回合中
 	 1. 選出主角(選已知最短距離最小的點)
 	 2. 更新adjacent點的最短距離
-	 ```C
+	 
+	
+```C
 		Dijkstras (Table T){
 			vertex V, W;
 			while (1) {
@@ -559,7 +576,7 @@ then Vj appears after Vi in the ordering
 				}
 			}
 		}
-	```
+```
 	
 ### All-Pairs Shortest Paths ###
 * D(k,i,j) 從i to j的路中經過的點編號最大是k
