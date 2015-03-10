@@ -32,15 +32,16 @@
               quadratic probing: F(i) = i^2
               double hashing:    F(i) = i*( TS2-(K % TS2) ) TS2 is a prime smaller than TS
 ```
-          * rehashing:  
-          弄個更大的array來重新hash(新TS通常是原TS的兩倍大的第一個質數)
-           * rehashing time complexity is O(N)
-           * rehashing 時機：**滿50%** 或 **有人無法Insert**
-    * Dynamic hashing
-       * Hashing function is change dynamically
-       * Extendible hashing: for searching of large amount of data  
+
+* rehashing:  
+ 弄個更大的array來重新hash(新TS通常是原TS的兩倍大的第一個質數)
+ * rehashing time complexity is O(N)
+ *  rehashing 時機：**滿50%** 或 **有人無法Insert**
+* Dynamic hashing
+ * Hashing function is change dynamically
+ * Extendible hashing: for searching of large amount of data  
        擴充Array. `EX.  00 01 10 11  --->  000 001 010 011 100 101 110 111`
-       * Linear hashing
+ * Linear hashing
 
 **A GOOD HASH FUNCTION**
 
