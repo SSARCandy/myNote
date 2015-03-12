@@ -57,7 +57,7 @@
 
 
 
-### Instertion Sort
+### Insertion Sort
         0   1   2  ... ...  P  ... ... ... N-1    每回合中
       -----------------------------------------   將 index P 的值插入到sorted的正確位置
       |   |   |   |   |   |   |   |   |   |   |   **index P就是 sorted & unsorted 的交界處
