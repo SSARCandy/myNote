@@ -5,11 +5,12 @@
   傅立葉轉換 *O(n^2)* --> 快速傅立葉轉換(FFT)  *O(n  logn)*
   * Smoothing
     
-     
+   ```  
      --------   			[1, 1, 1]
      |   .  |   ---> 1/9	[1, 1, 1]  
      |(x, y)|   			[1, 1, 1]
      -------- 
+   ```
     
   * Weber's Law  
   Just Noticeable Difference (JND)
@@ -39,7 +40,8 @@
       
       General Equation :  Ld = (sum |xi - yi|^d )^1/d
 
- * Euclidean distance
+ * Euclidean distance  
+ 
   ```
   d(P1,P2) =  sqrt( sum(xi - yi)^2 )
   ex.
@@ -48,6 +50,7 @@
      [sqrt(2), 1, sqrt(2)]
   ```
  * D4 distance (city-block distance)
+ 
  ```
   d(P1,P2) = sum abs(xi - yi)
   ex.
@@ -56,6 +59,7 @@
      [2, 1, 2]
  ```
  * D8 distance (chessboard distance)
+ 
  ```
   d(P1,P2) = max abs(xi - yi)
   ex.
