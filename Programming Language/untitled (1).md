@@ -55,7 +55,9 @@ length (_:xs) = 1 + length xs
     
     
     
-##Type 
+##Data Type
+**Data type is a set of value**
+
  - Type Inference : Haskell 可以支持**類型推導**
  - restrictive Type:
    - `[Int] -> [Int]`
@@ -65,8 +67,51 @@ length (_:xs) = 1 + length xs
  - Qualified Types:
    -  `Ord a => [a] -> [a]`  
    type a must be an instance of the ***Ord*** class  
-    
-    
+   
+- Type Declaration
+ - `type String = [Char]` : String 是 [Char] 的同義詞
+ - `type Pos = (Int, Int)` : Pos是一組數字
+ 
+- Enumerated types  
+   - `data Bool = False | True`  
+     Bool is a new type, with two new values False and True. 
+   - `data Answer = Yes | No | Unknown`
+   - 
+   ```Haskell
+   data Shape = Circle Float
+                | Rect Float Float 
+   
+   --We can define:
+   
+	square         :: Shape
+    square          = Rect 1 1
+    area           :: Shape → Float
+    area (Circle r) = pi * r^2
+    area (Rect x y) = x * y
+   
+   ```
+- Parameterized types  
+    `data Maybe a = Nothing | Just a`
+- Recursive types  
+   - `data List a = Nil | Cons a (List a)`  
+    A List is either:  
+    　　(1) Nil  
+　　(2) Head node + another List
+
+   - `data Nat = Zero | Succ Nat`
+   - Binary Trees  
+   
+   ```
+   data Tree = Leaf Int 
+               | Node Tree IntTree
+             
+   Ex.
+   Node (Node (Leaf 1) 3 (Leaf 4))
+    	   5
+		  (Node (Leaf 6) 7 (Leaf 9))
+   ```
+---
+  
 ##List Manipulation Functions
  - xs ++ ys 　　　(also known as append xs ys)
 
@@ -153,7 +198,8 @@ length (_:xs) = 1 + length xs
 
     
 
-##List Comprehension  
+##List Comprehension    
+**建構串列的簡潔方式**  
 List comprehensions allow many functions on lists to be performed in a clear and precise manner
 
 ```Haskell
@@ -161,12 +207,17 @@ List comprehensions allow many functions on lists to be performed in a clear and
 [1,4,9,16,25]
 
 --length function with wildcard and generator
-length :: [a] -> Int
+length   :: [a] -> Int
 length xs = sum [1 | _ <- xs]
 
 --Multiple Generators
 > [ (x, y) | x <- [1,2], y <- [8,9] ] -- x y寫的順序會影響產生出的Touple內的順序
 [(1,8),(1,9),(2,8),(2,9)]
+
+--產生List內元素所有組合
+perms [] = [[]]
+perms xs = [ x : ps| x  <- xs, --外迴圈 x一次取一個xs元素 
+					 ps <- perms ( xs \\ [x] ) ] --內迴圈 xs 扣掉 元素x
 
 --Guard
 > [x | x <- [1..10], even x] --The function even x is the guard function
@@ -174,10 +225,10 @@ length xs = sum [1 | _ <- xs]
 ```
 Using List Comprehension with Guards to define Prime function:
 ```Haskell
-factors :: Int -> [Int]
+factors  :: Int -> [Int]
 factors n = [x| x <- [1..n], n `mod` x==0]
 
-prime :: Int -> Bool
+prime  :: Int -> Bool
 prime n = length (factors n) == 2
 ```
 
@@ -215,7 +266,19 @@ so
  Ex. `(^2)` = `\x = x^2`
 
 
+###Fold(reduce)
+`Ex. flodr (-) 0 [1,2,3,4,5] = (1-(2-(3-(4-(5-0))))) = 3`  
+`Ex. foldl (–) 0 [1,2,3,4,5] = (((((0-1)-2)-3)-4)-5) = -15`
 
+```Haskell
+--Define:
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z []       = z
+foldr f z (x : xs) = f x (foldr f z xs)
+```
+
+###結構?
+可拆解、組裝、易理解的
 
 
 
