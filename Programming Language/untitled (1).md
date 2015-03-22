@@ -1,4 +1,4 @@
-#Pattern Matching 
+#Pattern Matching
  - Const pattern:**`1, 3.5, 'a', []`**
  - Structured pattern with var:**`(x:xs)`**
  - Var pattern:**` x, xs, ...`**
@@ -17,11 +17,11 @@
 
 ```Haskell
 length [] = 0
-length (_:xs) = 1 + length xs 
+length (_:xs) = 1 + length xs
 ```
 
 ##Pattern Matching Examples
- - Difference between 
+ - Difference between
 
   	```Haskell
     test1:: [Char] -> Bool
@@ -35,26 +35,26 @@ length (_:xs) = 1 + length xs
 
  - Tuple Patterns  
  A tuple of patterns is itself a pattern which matches any tuple of the **same arity** whose components match the corresponding patterns *in order*
- 
+
 	```Haskell
   fst:: (Int, Char) -> Int
   fst   (x, _) = x
-  
+
   snd:: (Int, Char) -> Char
   snd   (_, y) = y
  	```
-    
-    - Selection using Pattern Matching   
+
+    - Selection using Pattern Matching
     `Ex. (x1, x2, x3) = (100, 'A', "Math")`
-    
-    
+
+
 ##Polymorphic Functions & Types  
 **Polymorphic function** does not care about the element typeof its list parameter  
   類似物件導向的**多型** , For example:  `length ::[a] -> Int`  
   //*Here **a** is a type variablethat can be instantiated to any types*
-    
-    
-    
+
+
+
 ##Data Type
 **Data type is a set of value**
 
@@ -67,28 +67,29 @@ length (_:xs) = 1 + length xs
  - Qualified Types:
    -  `Ord a => [a] -> [a]`  
    type a must be an instance of the ***Ord*** class  
-   
+
 - Type Declaration
  - `type String = [Char]` : String 是 [Char] 的同義詞
  - `type Pos = (Int, Int)` : Pos是一組數字
- 
+
 - Enumerated types  
    - `data Bool = False | True`  
-     Bool is a new type, with two new values False and True. 
+     Bool is a new type, with two new values False and True.
    - `data Answer = Yes | No | Unknown`
-   - 
+
+  
    ```Haskell
    data Shape = Circle Float
-                | Rect Float Float 
-   
+                | Rect Float Float
+
    --We can define:
-   
+
 	square         :: Shape
     square          = Rect 1 1
     area           :: Shape → Float
     area (Circle r) = pi * r^2
     area (Rect x y) = x * y
-   
+
    ```
 - Parameterized types  
     `data Maybe a = Nothing | Just a`
@@ -100,28 +101,28 @@ length (_:xs) = 1 + length xs
 
    - `data Nat = Zero | Succ Nat`
    - Binary Trees  
-   
+
    ```
-   data Tree = Leaf Int 
+   data Tree = Leaf Int
                | Node Tree IntTree
-             
+
    Ex.
    Node (Node (Leaf 1) 3 (Leaf 4))
     	   5
 		  (Node (Leaf 6) 7 (Leaf 9))
    ```
 ---
-  
+
 ##List Manipulation Functions
  - xs ++ ys 　　　(also known as append xs ys)
 
- 
+
  ```Haskell
 	 (++) :: [a] -> [a] -> [a]
 	 [] ++ ys       = ys
 	 (x : xs) ++ ys = x : (xs ++ ys)
  ```
- 
+
  ```
 [1,2,3] ++ [4,5,6]
 				= { apply ++}
@@ -131,10 +132,10 @@ length (_:xs) = 1 + length xs
 …
 1: (2: (3: [4,5,6])))
 				= { list notation }
-[1,2,3,4,5,6] 
+[1,2,3,4,5,6]
  ```
  - reverse function
- 
+
  ```Haskell
   -- O(n^2)
   reverse :: [a] -> [a]
@@ -144,7 +145,7 @@ length (_:xs) = 1 + length xs
   -- Tail recursion O(n)
   reverse :: [a] -> [a]
   reverse xs = tailRev xs []
-  
+
   tailRev :: [a] -> [a] -> [a]
   tailRev [] ys 	= ys
   tailRev (x:xs) ys = tailRev xs (x:ys)
@@ -162,15 +163,15 @@ length (_:xs) = 1 + length xs
   unzip :: [(a,b)] -> ([a], [b])
   unzip []		   = []
   --x 配 a, y 配 b, ps配剩下的(a, b)
-  unzip ((x,y) : ps) = (x:xs, y:ys) -- 分解成兩個list, 先各unzip一個 
+  unzip ((x,y) : ps) = (x:xs, y:ys) -- 分解成兩個list, 先各unzip一個
                            where
                            (xs,ys) = unzip ps --recursive call 剩下的 ps
  ```
- 
+
  - Mutual Recursion  
    Functions that reference to each other
    - Example: given a list, selecting **even or odd positions** from it.
-    
+
     > evens::[a] -> [a]  
 	> odds ::[a] -> [a]
 
@@ -196,9 +197,9 @@ length (_:xs) = 1 + length xs
     ...
     ```
 
-    
 
-##List Comprehension    
+
+##List Comprehension
 **建構串列的簡潔方式**  
 List comprehensions allow many functions on lists to be performed in a clear and precise manner
 
@@ -216,7 +217,7 @@ length xs = sum [1 | _ <- xs]
 
 --產生List內元素所有組合
 perms [] = [[]]
-perms xs = [ x : ps| x  <- xs, --外迴圈 x一次取一個xs元素 
+perms xs = [ x : ps| x  <- xs, --外迴圈 x一次取一個xs元素
 					 ps <- perms ( xs \\ [x] ) ] --內迴圈 xs 扣掉 元素x
 
 --Guard
@@ -282,92 +283,92 @@ foldr f z (x : xs) = f x (foldr f z xs)
 
 
 
-    
+
     ```
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ```
