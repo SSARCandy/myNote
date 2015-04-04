@@ -82,5 +82,19 @@
  ----  x  [2,4,2]
     16      [1,2,1]
  ```
+ * Lowpass Filters
+  * Ideal Lowpass Filters  
+ 低頻就可以通過，其他就不能  
+ 有Ringing Effect，因為不連續性
+ 
+  * Butterworth Lowpass Filters  
+ 還是有Ringing Effect，但比較不明顯
+ 
+  * Gaussian Lowpass Filters  
+  不會有負數，所以沒有Ringing Effect
+ 
+ * Highpass Filters  
+ `Highpass = 1- Lowpass`
+  * Sharpening Filters
+ 
 
-  
