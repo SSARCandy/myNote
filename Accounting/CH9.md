@@ -258,54 +258,96 @@
       Equipment                           $xxx
   ```
 
+  ```C
+  Example
+    01/01/00  Machine Cost   $ 20,000
+    10 Years, Residual Value $  1,000
+    07/01/03  Sold for       $ 12,000
+    Using S-L  
+  --
+  07/01/03  Dep Exp                950
+                Acc Dep - Machinery       950
+  // (20,000 - 1,000)/10 = 1,900   每年的折舊費用
+  // 1,900 x 6/12 = 950
 
+  07/01/03  Cash                    12,000 // 賣出所得
+            Acc Dep - Machinery      6,650 // 1,900 x 3.5
+            Loss on Disposal of PA   1,350 // Book Value - sold value
+                Machinery                   20,000
+  ```
 
+* Retirement
+  1. Fully Depreciated (Cost = A/D)
+     ```
+     A/D          $xxx
+        Equipment     $xxx
+     ```
+  2. Not Fully Depreciated  
+  Salvaged Materials recorded out the lower of Scrap Value or Book Value
+    - Scrap Value >= Book Value
+       ```
+       Salvaged Material (=BV)  $xxx
+       A/D - Equipment          $xxx
+          Equipment                   $xxx
+       ```
+    - Scrap Value <  Book Value
+       ```
+       Salvaged Material (=SV)  $xxx
+       A/D - Equipment          $xxx
+          Equipment                   $xxx
+       ```
 
+* Exchanges
+  1. Having Commercial Substance 商業實質的交換交易  
+    - New Assert recorded at FV(old) + Cash Paid 
+    - New Assert recorded at FV(old) - Cash Received
 
+    ```C
+                              Office Equipment Exchange for Machine
+                                      (1)                 (2)
+    Cost of Office Equipment        10,000              10,000
+    A/D of Office Equipment          2,500               6,500
+    FV of Office Equipment           4,000               4,000
+    Cash Paid                        3,000               3,000
+    FV of Machine                    7,000               7,000
+    
+    (1)
+    Machine                     7,000
+    Acc Dep - Office Equipment  2,500
+    Loss on Disposal of PA      3,500
+        Office Equipment              10,000
+        Cash                           3,000
 
+    (2)
+    Machine                     7,000
+    Acc Dep - Office Equipment  6,500
+        Gain on Disposal of PA           500
+        Office Equipment              10,000
+        Cash                           3,000
+    ```
 
-                                    
-                                    ```
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    ```
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
+  2. Having no Commercial Substance   
+    - New Assert recorded at BV(old) + Cash Paid 
+    - New Assert recorded at BV(old) - Cash Received
+
+    ```C
+                              Old Machine Exchange for new Machine
+                                      (3)                 (4)
+    Cost of old Machine              7,000               7,000
+    A/D of old Machine               4,000               2,000
+    FV of old Machine                3,800               2,800
+    Cash Paid                          200                 200
+    FV of new Machine                4,000               3,000
+    
+    (3)
+    Machinery (New)             3,200 // (7,000 - 4,000) + 200 = 3,200
+    Acc Dep - Machinery         4,000
+        Machinery                      7,000
+        Cash                             200
+
+    (4)
+    Machinery (New)             5,200 // (7,000 - 2,000) + 200 = 5,200
+    Acc Dep - Machinery         2,000
+        Machinery                      7,000
+        Cash                             200
+    ```
