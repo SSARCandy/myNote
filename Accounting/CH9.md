@@ -278,24 +278,27 @@
 
 * Retirement
   1. Fully Depreciated (Cost = A/D)
-     ```
+    
+    ```
      A/D          $xxx
         Equipment     $xxx
-     ```
+    ```
   2. Not Fully Depreciated  
   Salvaged Materials recorded out the lower of Scrap Value or Book Value
-    - Scrap Value >= Book Value
-       ```
+    - Scrap Value >= Book Value  
+    
+      ```
        Salvaged Material (=BV)  $xxx
        A/D - Equipment          $xxx
           Equipment                   $xxx
-       ```
-    - Scrap Value <  Book Value
-       ```
+      ```
+    - Scrap Value <  Book Value  
+    
+      ```
        Salvaged Material (=SV)  $xxx
        A/D - Equipment          $xxx
           Equipment                   $xxx
-       ```
+      ```
 
 * Exchanges
   1. Having Commercial Substance 商業實質的交換交易  
