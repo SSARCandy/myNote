@@ -354,3 +354,153 @@
         Machinery                      7,000
         Cash                             200
     ```
+    
+* Revaluation of Plant Assert
+    ```C
+    Equipment:
+        Cost    10,000
+        A/D      1,500
+        FV       9,000
+
+    (1) Acc Dep - Equipment    1,500
+    (3)    Revaluation surplus         500
+    (2)    Equipment                 1,000 //(10,000 - 9,000)
+    ```
+
+
+### Natural Resources 地耗資源
+
+
+   * Depletion 折耗
+    
+    ```
+    Depletion Exp       $xxx
+        Acc Depletion        $xxx
+    ```
+
+    ```C
+    Example
+
+    Acquisition Cost (含土地)       $ 20,000,000
+    Exploration Cost                $  5,000,000
+    Development Cost                $  4,000,000
+    Land                            $  1,000,000
+        # of u to be extracted                   2,800,000 u
+        # of u extracted durning the Period         10,000 u // 4,000 u sold
+    Mining labor Cost               $    700,000
+    Depreciation on Machine         $     50,000
+    ```
+
+    ```C
+    Ore Deposits    19,000,000
+    Land             1,000,000
+        Cash                  20,000,000
+
+    Ore Deposits     9,000,000
+        Cash                   9,000,000
+
+    Depletion Exp      100,000
+        Acc Depletion            100,000
+    // (19,000,000 + 9,000,000)/2,800,000 x 10,000 = 100,000
+
+    Wages Exp (Mining) 700,000
+        Wages payable            700,000
+
+    Dep Exp(Mining)     50,000
+        Acc Dep - Mining Eq       50,000
+
+    **Closing Entry**
+    CGS (40%)           340,000
+    Inventory(60%)      510,000
+        Depletion Exp           100,000
+        Wages Exp(Mining)       700,000
+        Dep Exp(Mining)          50,000
+    ```
+
+### Intangible Assert
+   - Liimted Life Intangible Asserts: **Amortization 攤銷**
+
+    ```
+        Amortization Exp-Patents    $xxx
+            Patents                      $xxx
+    ```
+      - Patents 專利權
+      - Copyright 著作權
+      - Franchises 特許權
+
+        ```
+            (1) Franchises  xx          (2) Franchises Exp  xx
+                    Cash        xx              Cash            xx
+
+                Amortization Exp  xx
+                    Franchises        xx
+        ```
+        
+    - Indefinite Life Intangible Assert: **無年限設定，不需攤銷**
+        - Trademark 商標
+        - Goodwill  商譽
+
+### Research and Development Costs
+   1. Research Exp
+    2. Development Exp
+    3. Development Cost
+        - 達成資產的技術可行性沒有問題
+        - 公司有意願
+        - 公司有能力使用或處分
+        - 資產可賣出
+        - 經費可區分為兩部分
+
+### Impairment of Asserts  資產減損 (補)
+   - Recoverable Amount = `Max( NetFV(FV less cost to sell), Value in use )`
+    - Book value > Recoverable Amount  -->  **Impairment Loss**
+
+        ```
+        Example
+        05年1/1 購入機器，成本 1,000,000 使用年限5年，殘值 200,000 ，S-L
+        05年底，機器公允價值 730,000 使用價值 765,179
+        07年底，可回收金額 520,000
+        09年底，以 210,000 售出
+        ```
+
+        ```C
+        05/01/01 Machinery      1,000,000
+                    Cash                  1,000,000
+
+        05/12/31 Dep Exp          160,000
+                    Acc Dep                 160,000
+                // (1,000,000 - 200,000)/5 = 160,000
+
+        05/12/31 Impairment Loss   74,821
+                    Acc Impairment           74,821
+                // 1,000,000 - 160,000 = 840,000
+                // 840,000 - 765,179 = 74,821
+
+        06/12/31 Dep Exp          141,295
+                    Cash                    141,295
+                // (765,179 - 200,000)/4 = 141,295
+
+        07/12/31 Dep Exp          141,295
+                    Acc Dep                 141,295
+        // BV = 1,000,000 - (160,000 + 141,295 * 2) - 74,821 = 482,589
+        // BV (if Impairment loss not recognized) = 1,000,000 - (160,000 * 3) = 520,000
+
+        07/12/31 Acc Impairment    37,411
+                    Gain on Residual-
+                    of Assert Impairment     37,411
+        // 520,000 - 482,589 = 37,411
+
+        08/12/31 Dep Exp          160,000
+                    Acc Dep                 160,000
+        // (520,000 - 200,000)/2 = 160,000
+
+        09/12/31 Cash             210,000 // Sold Price
+                 Acc Dep          762,590 // Accumulated Dep
+                 Acc Impairment    37,410 // 74,821 - 37,411
+                    Gain on Disposal-
+                    of Plant Assert         10,000
+                    Machinery            1,000,000 // Ori Price
+        ```
+
+### Assert Turnover Ratio  資產周轉率
+公式 = `Net Sales/Avg Total Asserts`  
+`E 9-16`
