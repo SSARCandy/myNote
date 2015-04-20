@@ -281,7 +281,20 @@ foldr f z (x : xs) = f x (foldr f z xs)
 ###結構?
 可拆解、組裝、易理解的
 
-
+### Semantics
+#### EXP1: 
+利用Haskell實做一系列小語言
+	- Binding  
+	賦予變數一個意思(值、意義)
+	- Environment  
+	儲存Binding的對應
+		- updEnv
+		- findEnv
+		  ```Haskell
+		  findEnv:: String -> Env a -> Maybe a
+		  // 不一定找得到對應，所以回傳 Maybe 型態 
+		  ```
+	- Error Checking
 
 
     ```
