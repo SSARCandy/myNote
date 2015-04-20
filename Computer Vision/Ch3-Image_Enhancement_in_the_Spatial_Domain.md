@@ -88,20 +88,21 @@
    ```
    
    
+   
  ###Smoothing Spatial Filters
  * Box filter  
  
  ```
-    1      [1,1,1]
+   1      [1,1,1]
  ---  x  [1,1,1]
-    9      [1,1,1]
+   9      [1,1,1]
  ```
  
  * Weighted average 
  ```
-    1       [1,2,1]
+   1       [1,2,1]
  ----  x  [2,4,2]
-    16      [1,2,1]
+   16      [1,2,1]
  ```
  * Lowpass Filters
   * Ideal Lowpass Filters  
