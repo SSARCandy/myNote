@@ -49,9 +49,30 @@
                                                  s5=6.68
                                                  s6=6.86
                                                  s7=7
-   
   ```
   
+  ```C
+  void HistogramEqualization(Mat& src)
+  {
+	int histogram_ori[255] = { 0 };
+	int lookuptable[255] = { 0 };
+	for (int i = 0; i < src.rows; i++)
+		for (int j = 0; j < src.cols; j++)
+			histogram_ori[src.at<uchar>(i, j) % 255]++; // get original histogram
+
+	float totalPixel = src.rows*src.cols;
+	float accumPr = 0;
+	for (int i = 0; i < 255; i++)
+	{
+		accumPr += (float)histogram_ori[i] / totalPixel;
+		lookuptable[i] = (int)(255.0*(accumPr) + 0.5);
+	}
+
+	for (int i = 0; i < src.rows; i++)
+		for (int j = 0; j < src.cols; j++)
+			src.at<uchar>(i,j) = lookuptable[src.at<uchar>(i, j)]; // set equalization histogram
+  }
+  ```
   * Histogram Matching  
    Histogram Equalization is a case of  Histogram Matching  
    
