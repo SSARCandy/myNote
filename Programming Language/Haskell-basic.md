@@ -252,10 +252,10 @@ fac n | n > 0   = n * fac (n-1)
 ```
 ```Haskell
 --tail recursion ver.
-fac Int -> Int 
+fac :: Int -> Int 
 fac n = tailfac n 1 
 
-tailfac Int -> Int -> Int
+tailfac :: Int -> Int -> Int
 tailfac n acc | n == 0 = acc
               | n > 0  = tailfac (n-1) n * acc
 
