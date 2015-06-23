@@ -232,7 +232,40 @@ factors n = [x| x <- [1..n], n `mod` x==0]
 prime  :: Int -> Bool
 prime n = length (factors n) == 2
 ```
+#Tail recursion
+- Tail recursion: **recursive call occurs last**
+- The technique of accumulating parameters
+- Is logically equivalent to a loop!
 
+```Haskell
+--recursion ver.
+fac :: Int -> Int
+fac n | n == 0  = 1
+fac n | n > 0   = n * fac (n-1)
+
+--(fac 5)
+--5 * (fac 4)
+--5 * 4 * (fac 3)
+--...
+--5 * 4 * 3 * 2 * 1 * 1
+--120
+```
+```Haskell
+--tail recursion ver.
+fac n = tailfac n 1 
+tailfac n acc | n == 0 = acc
+              | n > 0  = tailfac (n-1) n * acc
+
+--(fac 5)
+--(tailfac 5 1)
+--(tailfac 4 5)
+--(tailfac 3 20)
+--(tailfac 2 60)
+--(tailfac 1 120)
+--(tailfac 0 120)
+--120
+
+```
 
 #Higher-Order Functions(HoF)
  - Functions take **functions as arguments**
