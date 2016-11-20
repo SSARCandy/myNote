@@ -1,6 +1,6 @@
 ## Shading
 
-### Illumination model
+### Illumination model(Phong model)
 
 - Ambient
 

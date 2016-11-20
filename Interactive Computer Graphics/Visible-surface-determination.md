@@ -1,6 +1,6 @@
-## Visible-surface determination
+# Visible-surface determination
 
-### Painter
+## Painter(Depth Sort)
 
 ```py
 objects = objects.sort() # far to near
@@ -15,7 +15,7 @@ for obj in objects:
 
 
 
-### Z-buffer
+## Z-buffer
 
 ```py
 z_buffer[x][y] = INFINITY
@@ -31,16 +31,16 @@ for polygon in polygon_list:
 - 維護一個跟螢幕一樣大的 z-buffer array，紀錄每個 pixel 的 Z 值以及其顏色
 - 簡單，可以藉由硬體幫助讓此演算法超快
 
-### Binary Space Partition
+## Binary Space Partition
 
-#### Build the BSP tree
+### Build the BSP tree
 
 左子樹是 Back, 右子樹是 Front  
 ![](./img/1.gif)
 ![](./img/8.jpg)
 
 
-#### Traversal
+### Traversal
 
 ```py
 def BSP_displayTree(root):
@@ -70,4 +70,5 @@ BSP_displayTree(C1) # back tree
 
 # [3-rd] keep recursive...
 ```
+
 ---
