@@ -33,6 +33,31 @@ error        (0,0) diffusion    (0,1) diffusion
 
 ## Shading
 
+### Illumination model
+
+- Ambient
+
+    I = la * ka * objectColor  
+    la: Intensity of ambient light  
+    ka: 0.0 ~ 1.0
+  
+- Diffuse
+
+    I = lightColor * Kd * objectColor * cosθ  
+    ![](./img/3.jpg)
+
+- Specular
+
+    I = Ks * lightColor * cos^n(α)  
+    Ks = specular-reflection coef.  
+    ![](./img/4.jpg)
+
+### Polygon Shading
+
+- Flat shading: 整個三角形都一樣的顏色
+- Gouraud shading: 算出頂點顏色，三角形內部顏色用雙線性內插
+- Phong shading: 三角形內部法向量用雙線性內插，再去算所有點顏色
+
 
 
 ---
@@ -41,11 +66,35 @@ error        (0,0) diffusion    (0,1) diffusion
 
 ### Painter
 
-### z-buffer
+### Z-buffer
+
+```py
+z_buffer[x][y] = INFINITY
+color[x][y] = 0
+
+for polygon in polygon_list:
+    for (x, y) in polygon:
+        if depth_P(x, y) < z-buffer[x][y]:
+            z-buffer[x][y] = depth_P(x, y)
+            color[x][y] = color_of_P(x, y)
+```
 
 ### List-priority
 
 ### Binary Space Partition
+
+```py
+def BSP_displayTree(root):
+    if Viewer is in front of root:
+        # Begin {display back child, root, and front child}
+        BSP_displayTree(root.backchild)
+        displayPolygon(root)
+        BSP_displayTree(root.frontchild)
+    else:
+        BSP_displayTree(root.frontchild)
+        displayPolygon(root)
+        BSP_displayTree(root.backchild)
+```
 
 ---
 
@@ -58,3 +107,14 @@ error        (0,0) diffusion    (0,1) diffusion
 ---
 
 ## Curve & Surface
+
+### Bezier Curve
+
+- [DEMO](http://math.hws.edu/eck/cs424/notes2013/canvas/bezier.html)
+- Use subdividing to approximate real curve
+
+  ![](./img/5.jpg)
+
+### Parametric bicubic surfaces
+
+![](./img/6.jpg)
