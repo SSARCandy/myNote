@@ -15,10 +15,10 @@
 把錯誤往右下擴散，一種平均錯誤的概念
 
 ```
-error        (0,0) diffusion    (0,1) diffusion
-[1  1  1]    [    1  1+3/8 1]    [    1  1+3/8              1+(11/8)*(3/8)]
-[1 -1  1] -> [1+3/8 -1+2/8 1] -> [1+3/8 -1+2/8+(11/8)*(3/8) 1+(11/8)*(2/8)]
-[1 -1  1]    [    1     -1 1]    [    1                  -1              1]
+original     (0,0) err = 1       (0,1) err = 11/8
+[7 7 5]    [     6  7+3/8 *]    [     6                   6  1+(11/8)*(3/8)]
+[3 1 3] -> [ 3+2/8  1+2/8 *] -> [ 3+3/8  1+2/8+(11/8)*(3/8)               *]
+[5 8 7]    [     *      * *]    [     *                   *               *]
 ```
 
 ### Clipping Line
@@ -27,3 +27,8 @@ error        (0,0) diffusion    (0,1) diffusion
 
 - **[reject line]** If logical AND of the codes of the endpoints is not zero
 - **[new line segment]** Replacement by intersection point
+
+### Tranformation
+
+![](./img/13.jpg)
+![](./img/14.jpg)
